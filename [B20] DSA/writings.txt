@@ -1,0 +1,42 @@
+Advanced Java Collections Assignment
+
+Understanding the Collections
+
+1. List/Queue-like: LinkedList, Deque, PriorityQueue (These all handle collections of single elements, but in very different ways).
+2. Map/Set: HashMap, TreeMap, HashSet (These handle unique elements or key-value mappings).
+
+
+Comparison: Lists, Deques, and Queues
+
+Feature         | LinkedList                            | Deque (e.g., ArrayDeque)                | PriorityQueue
+----------------|---------------------------------------|-----------------------------------------|--------------------------------------
+Main Interface  | List, Deque, Queue                    | Deque, Queue                            | Queue
+Data Structure  | Doubly-Linked List (Nodes)            | Resizable Array                         | Binary Heap
+Ordering        | Insertion Order.                      | FIFO/LIFO. (First-In/Last-In)           | Priority Order. (Sorted by heap)
+Key Operations  | add(index, E): O(n)                   | addFirst/Last: O(1) (amortized)         | add(E) (offer): O(log n)
+                | get(index): O(n)                      | removeFirst/Last: O(1) (amortized)      | remove() (poll): O(log n)
+                | add(E) (at end): O(1)                 | (No get(index) method)                  | peek(): O(1)
+                | remove(E): O(n)                       |                                         |
+                | addFirst/Last: O(1)                   |                                         |
+Null Elements?  | Yes                                   | No                                      | No
+When to Use     | 1. Frequent insertion/removal in the  | 1. As a Stack (LIFO): Use push()/pop().   | 1. Processing items based on priority.
+                |    middle (with an Iterator).         | 2. As a Queue (FIFO): Use add()/remove(). | 2. "Find the smallest/largest" item.
+                | 2. When you need both List (get by   | 3. Any time you need a "double-ended   | 3. Task scheduling (e.g., "process
+                |    index) and Deque (add/remove ends) |    queue".                              |    highest priority job first").
+                |    behavior.                          |                                         |
+
+
+Comparison: Maps and Sets
+
+Feature         | HashMap                               | TreeMap                               | HashSet
+----------------|---------------------------------------|---------------------------------------|--------------------------------------
+Main Interface  | Map                                   | SortedMap, Map                        | Set
+Data Structure  | Hash Table                            | Red-Black Tree                        | Hash Table (uses a HashMap internally)
+Stores...       | Key-Value Pairs                       | Key-Value Pairs                       | Unique Elements Only
+Ordering        | Unordered. (No guarantee).            | Sorted by Key. (Natural or Comparator)| Unordered. (No guarantee).
+Performance     | put, get, containsKey: O(1) (Average) | put, get, containsKey: O(log n)       | add, contains: O(1) (Average)
+Null Elements?  | Yes (one null key, many null values)  | Yes (values), No (keys, if natural)   | Yes (one null element)
+When to Use     | 1. Fastest lookups.                   | 1. When you need to iterate over keys | 1. Checking for existence.
+                | 2. When you need to map keys to       |    in sorted order.                   | 2. Storing a collection of unique
+                |    values and order doesn't matter.   | 2. When you need a Map and guaranteed |    items where order doesn't matter.
+                |                                       |    O(log n) performance.              |
