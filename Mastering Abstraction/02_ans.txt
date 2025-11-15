@@ -1,0 +1,20 @@
+This is largely a myth in modern Java.
+
+While it was true that invokeinterface (for interface methods) was historically slower than invokevirtual (for class/abstract class methods), 
+this performance gap has been effectively eliminated by modern Java Virtual Machine (JVM) optimizations.
+
+The Explanation
+Historically: Calling a method on an abstract class reference (invokevirtual) was faster. 
+The JVM could use a simple "vtable" (virtual method table) to look up the method's memory address at a fixed offset. 
+Interface calls (invokeinterface) were more complex, as a class can implement many interfaces, requiring a more dynamic search.
+
+Modern Java (The JIT Compiler): The Just-In-Time (JIT) compiler analyzes your code as it runs. 
+When it sees an interface method being called repeatedly (especially on an object that doesn't change type), 
+it performs powerful optimizations, such as inline caching. The JIT "learns" the concrete class and rewrites the call to be as fast as a direct invokevirtual call, 
+or even inlines the method's code, removing the call overhead entirely.
+
+Conclusion: Any theoretical performance difference is negligible in real-world applications. 
+Your choice between an abstract class and an interface should always be based on your design needs ("is-a" vs. "can-do"), not on microscopic performance concerns.
+
+New Example
+This example runs a performance test, but it includes a "warm-up" phase. This warm-up gives the JIT compiler time to optimize the calls before we start timing. As a result, you will see that all three call types (interface, abstract, and concrete) have nearly identical performance.
