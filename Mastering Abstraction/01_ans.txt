@@ -1,0 +1,14 @@
+The Story: Animals and Abilities
+Imagine we are modeling animals.
+
+Abstract Class (is-a): create abstract class Animal. All animals share common traits. They all have an age (state) and can eat() (a concrete method).
+However, they each makeSound() differently (an abstract method). A Dog is-a Animal. We use an abstract class to share code and state for a family of related objects.
+
+Interface (can-do): Now, we want to model the ability to fly.
+A Bird (which is-a Animal) can fly. But an Airplane (which is not an animal) can also fly.
+These two classes are unrelated, but they share a capability. We create the interface Flyable to define this "can-do" relationship.
+
+When to Use
+Abstract Class: Use when classes are closely related, sharing a common identity, state (fields), and base behavior (methods). (An "is-a" relationship).
+
+Interface: Use when classes are unrelated but must share a common capability or contract. (A "can-do" relationship).
