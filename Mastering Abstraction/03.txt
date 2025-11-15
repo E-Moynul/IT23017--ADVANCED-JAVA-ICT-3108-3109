@@ -1,0 +1,14 @@
+Feature                 Abstract Class                          Interface
+-----------------------------------------------------------------------------------------
+Purpose                 An "is-a" relationship.                 A "can-do" relationship.
+                        (e.g., Dog *is-a* Animal)               (e.g., Bird *can-do* Flyable)
+
+Inheritance             extends ONE class                       implements MANY interfaces
+
+Fields (State)          Can have instance fields (state)        Cannot have instance fields
+
+Constructors            YES                                     NO
+
+Methods                 Abstract, concrete, static, final       Abstract, default, static
+
+Access Modifiers        public, protected, private, default     public (implicitly)
