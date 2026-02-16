@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Registration - Q2</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; margin-top: 50px; background-color: #eef2f3; }
+        .form-container { background: white; padding: 30px; display: inline-block; border-radius: 15px; box-shadow: 0px 10px 20px rgba(0,0,0,0.1); border-top: 5px solid #007bff; }
+        .success { color: #28a745; font-weight: bold; background: #d4edda; padding: 10px; border-radius: 5px; margin-bottom: 15px; }
+        input { padding: 8px; width: 200px; border-radius: 5px; border: 1px solid #ccc; margin-bottom: 10px; }
+        button { padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2 style="color: #333;">Student Registration (Q2)</h2>
+    
+    <p style="color: #d9534f; font-weight: bold; font-size: 1.1em;">
+        Current Date & Time: <span id="datetime"></span>
+    </p>
+
+    <div th:if="${msg}" class="success">
+        <span th:text="${msg}"></span>
+    </div>
+
+    <form th:action="@{/saveStudent}" method="post">
+        <label>Student Name:</label><br>
+        <input type="text" name="name" placeholder="Enter Name" required /><br>
+        
+        <label>Student ID:</label><br>
+        <input type="text" name="studentId" placeholder="Enter ID" required /><br>
+        
+        <label>CGPA:</label><br>
+        <input type="number" step="0.01" name="cgpa" placeholder="Enter CGPA" required /><br>
+        
+        <button type="submit">Submit Data</button>
+    </form>
+</div>
+
+<script>
+    // তারিখ এবং সময় রিয়েল-টাইমে দেখানোর জন্য জাভাস্ক্রিপ্ট
+    function updateDateTime() {
+        const now = new Date();
+        document.getElementById('datetime').innerHTML = now.toLocaleString();
+    }
+    setInterval(updateDateTime, 1000);
+    updateDateTime();
+</script>
+
+</body>
+</html>
